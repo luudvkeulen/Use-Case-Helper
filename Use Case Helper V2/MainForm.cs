@@ -12,22 +12,28 @@ namespace Use_Case_Helper_V2
 {
     public partial class MainForm : Form
     {
-        private List<Actor> actoren = new List<Actor>();
         int panelsize;
+        int amountofactors = 1;
+        PictureBox[] actors;
 
         public MainForm()
         {
             InitializeComponent();
             panelsize = pnlUseCases.Width / 3;
+            actors = new PictureBox[] { actor1, actor2, actor3 };
         }
 
         private void panel1_Click(object sender, EventArgs e)
         {
-            if(radioActor.Checked && (MousePosition.X < panelsize))
+            if(Cursor.Position.X < panelsize)
             {
-                if(actoren.Count < 3)
+                if (radioActorAdd.Checked)
                 {
-                    actoren.Add(new Actor(actoren.Count + 1));
+                    amountofactors = Actor.AddActor(amountofactors, actors);
+                }
+                else if (radioActorRem.Checked)
+                {
+                    amountofactors = Actor.RemoveActor(amountofactors, actors);
                 }
             }
 
@@ -36,7 +42,7 @@ namespace Use_Case_Helper_V2
                 MessageBox.Show("Line");
             }
 
-            else if (radioUseCase.Checked && (MousePosition.X > (panelsize * 2) ) )
+            else if (radioUseCase.Checked && (Cursor.Position.X > (panelsize * 2) ) )
             {
                 MessageBox.Show("UseCase");
             }
