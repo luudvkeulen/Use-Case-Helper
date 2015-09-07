@@ -6,7 +6,13 @@ using System.Threading.Tasks;
 
 namespace Use_Case_Helper_V2
 {
-    class UseCase : Drawing
+    public class UseCase : Drawing
     {
+        string Name { get; set; }
+
+        public UseCase(int X1, int Y1) : base(X1, Y1)
+        {
+
+        }
     }
 }

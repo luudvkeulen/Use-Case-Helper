@@ -34,7 +34,6 @@
             this.actor1 = new System.Windows.Forms.PictureBox();
             this.grpElementen = new System.Windows.Forms.GroupBox();
             this.radioActorRem = new System.Windows.Forms.RadioButton();
-            this.radioUseCase = new System.Windows.Forms.RadioButton();
             this.radioLine = new System.Windows.Forms.RadioButton();
             this.radioActorAdd = new System.Windows.Forms.RadioButton();
             this.btnClear = new System.Windows.Forms.Button();
@@ -73,6 +72,7 @@
             this.actor2.TabIndex = 2;
             this.actor2.TabStop = false;
             this.actor2.Visible = false;
+            this.actor2.Click += new System.EventHandler(this.actor2_Click);
             // 
             // actor3
             // 
@@ -86,11 +86,12 @@
             this.actor3.TabIndex = 1;
             this.actor3.TabStop = false;
             this.actor3.Visible = false;
+            this.actor3.Click += new System.EventHandler(this.actor3_Click);
             // 
             // actor1
             // 
             this.actor1.BackColor = System.Drawing.Color.White;
-            this.actor1.Enabled = false;
+            this.actor1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.actor1.Image = global::Use_Case_Helper_V2.Properties.Resources.actor;
             this.actor1.Location = new System.Drawing.Point(3, 3);
             this.actor1.Name = "actor1";
@@ -98,18 +99,18 @@
             this.actor1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.actor1.TabIndex = 0;
             this.actor1.TabStop = false;
+            this.actor1.Click += new System.EventHandler(this.actor1_Click);
             // 
             // grpElementen
             // 
             this.grpElementen.Controls.Add(this.radioActorRem);
-            this.grpElementen.Controls.Add(this.radioUseCase);
             this.grpElementen.Controls.Add(this.radioLine);
             this.grpElementen.Controls.Add(this.radioActorAdd);
             this.grpElementen.Location = new System.Drawing.Point(9, 10);
             this.grpElementen.Margin = new System.Windows.Forms.Padding(2);
             this.grpElementen.Name = "grpElementen";
             this.grpElementen.Padding = new System.Windows.Forms.Padding(2);
-            this.grpElementen.Size = new System.Drawing.Size(246, 41);
+            this.grpElementen.Size = new System.Drawing.Size(174, 41);
             this.grpElementen.TabIndex = 1;
             this.grpElementen.TabStop = false;
             this.grpElementen.Text = "Elementen";
@@ -125,18 +126,6 @@
             this.radioActorRem.TabStop = true;
             this.radioActorRem.Text = "Actor-";
             this.radioActorRem.UseVisualStyleBackColor = true;
-            // 
-            // radioUseCase
-            // 
-            this.radioUseCase.AutoSize = true;
-            this.radioUseCase.Location = new System.Drawing.Point(170, 17);
-            this.radioUseCase.Margin = new System.Windows.Forms.Padding(2);
-            this.radioUseCase.Name = "radioUseCase";
-            this.radioUseCase.Size = new System.Drawing.Size(71, 17);
-            this.radioUseCase.TabIndex = 3;
-            this.radioUseCase.TabStop = true;
-            this.radioUseCase.Text = "Use Case";
-            this.radioUseCase.UseVisualStyleBackColor = true;
             // 
             // radioLine
             // 
@@ -211,7 +200,6 @@
         private System.Windows.Forms.Panel pnlUseCases;
         private System.Windows.Forms.GroupBox grpElementen;
         private System.Windows.Forms.RadioButton radioActorAdd;
-        private System.Windows.Forms.RadioButton radioUseCase;
         private System.Windows.Forms.RadioButton radioLine;
         private System.Windows.Forms.Button btnClear;
         private System.Windows.Forms.Button btnSave;

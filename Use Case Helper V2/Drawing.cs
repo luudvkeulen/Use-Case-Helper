@@ -6,9 +6,15 @@ using System.Threading.Tasks;
 
 namespace Use_Case_Helper_V2
 {
-    abstract class Drawing
+    public abstract class Drawing
     {
-        public int X { get; set; }
-        public int Y { get; set; }
+        public int X1 { get; set; }
+        public int Y1 { get; set; }
+
+        public Drawing(int X1, int Y1)
+        {
+            this.X1 = X1;
+            this.Y1 = Y1;
+        }
     }
 }

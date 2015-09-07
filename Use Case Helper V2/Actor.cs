@@ -7,34 +7,61 @@ using System.Windows.Forms;
 
 namespace Use_Case_Helper_V2
 {
-    public static class Actor
+    public class Actor
     {
-        public static int AddActor(int amount, PictureBox[] actors)
+        PictureBox[] Actors { get; set; }
+        int amountofactors;
+        public Actor(PictureBox[] actors)
         {
-            switch (amount)
+            Actors = actors;
+            amountofactors = 1;
+        }
+        public void AddActor()
+        {
+            switch (amountofactors)
             {
                 case 1:
-                    actors[1].Visible = true;
-                    return 2;
+                    Actors[1].Visible = true;
+                    Actors[1].Enabled = true;
+                    amountofactors++;
+                    break;
                 case 2:
-                    actors[2].Visible = true;
-                    return 3;
-                default:
-                    return amount;
+                    Actors[2].Visible = true;
+                    Actors[2].Enabled = true;
+                    amountofactors++;
+                    break;
             }
         }
-        public static int RemoveActor(int amount, PictureBox[] actors)
+        public void RemoveActor()
         {
-            switch (amount)
+            switch (amountofactors)
             {
                 case 2:
-                    actors[1].Visible = false;
-                    return 1;
+                    Actors[1].Visible = false;
+                    Actors[1].Enabled = false;
+                    amountofactors--;
+                    break;
                 case 3:
-                    actors[2].Visible = false;
-                    return 2;
-                default:
-                    return amount;
+                    Actors[2].Visible = false;
+                    Actors[2].Enabled = false;
+                    amountofactors--;
+                    break;
+            }
+        }
+
+        public void SelectActor(int i)
+        {
+            string actor = "actor";
+            foreach(PictureBox picture in Actors)
+            {
+                if (picture.Name == actor + i.ToString())
+                {
+                    picture.BorderStyle = BorderStyle.FixedSingle;
+                }
+                else
+                {
+                    picture.BorderStyle = BorderStyle.None;
+                }
             }
         }
     }
