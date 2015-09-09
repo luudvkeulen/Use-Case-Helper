@@ -82,7 +82,11 @@ namespace Use_Case_Helper_V2
             
             else if (radioInfo.Checked)
             {
-
+                if (existing)
+                {
+                    UseCaseInfo UseCaseForm = new UseCaseInfo(usecase);
+                    UseCaseForm.Show();
+                }
             }
         }
 

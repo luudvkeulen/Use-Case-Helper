@@ -25,3 +25,4 @@ C:\Users\Luud\Source\Repos\Use-Case-Helper\Use Case Helper V2\obj\Debug\Use_Case
 C:\Users\Luud\Source\Repos\Use-Case-Helper\Use Case Helper V2\obj\Debug\Use Case Helper V2.csproj.GenerateResource.Cache
 C:\Users\Luud\Source\Repos\Use-Case-Helper\Use Case Helper V2\obj\Debug\Use Case Helper V2.exe
 C:\Users\Luud\Source\Repos\Use-Case-Helper\Use Case Helper V2\obj\Debug\Use Case Helper V2.pdb
+C:\Users\Game-PC\Source\Repos\Use-Case-Helper\Use Case Helper V2\obj\Debug\Use_Case_Helper_V2.UseCaseInfo.resources

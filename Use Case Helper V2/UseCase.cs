@@ -10,11 +10,17 @@ namespace Use_Case_Helper_V2
 {
     public class UseCase : Drawing
     {
-        TextBox Textbox { get; set; }
-        string Name { get; set; }
-        string Text { get; set; }
+        public TextBox Textbox { get; set; }
+        public string Name { get; set; }
+        public string Text { get; set; }
         public int X2 { get; set; }
         public int Y2 { get; set; }
+        public string Samenvatting { get; set; }
+        public string Actoren { get; set; }
+        public string Aannamen { get; set; }
+        public string Beschrijving { get; set; }
+        public string Uitzonderingen { get; set; }
+        public string Resultaat { get; set; }
 
         public UseCase(MainForm form,int textboxes, int X1, int Y1) : base(X1, Y1)
         {
