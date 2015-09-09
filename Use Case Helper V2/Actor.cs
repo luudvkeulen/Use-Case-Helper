@@ -32,22 +32,34 @@ namespace Use_Case_Helper_V2
                     break;
             }
         }
-        public void RemoveActor()
+        public void RemoveActor(bool all)
         {
-            switch (amountofactors)
+            if (all)
             {
-                case 2:
-                    Actors[1].Visible = false;
-                    Actors[1].Enabled = false;
-                    amountofactors--;
-                    SelectActor(1);
-                    break;
-                case 3:
-                    Actors[2].Visible = false;
-                    Actors[2].Enabled = false;
-                    amountofactors--;
-                    SelectActor(1);
-                    break;
+                Actors[1].Visible = false;
+                Actors[1].Enabled = false;
+                Actors[2].Visible = false;
+                Actors[2].Enabled = false;
+                SelectActor(1);
+                amountofactors = 1;
+            }
+            else
+            {
+                switch (amountofactors)
+                {
+                    case 2:
+                        Actors[1].Visible = false;
+                        Actors[1].Enabled = false;
+                        amountofactors--;
+                        SelectActor(1);
+                        break;
+                    case 3:
+                        Actors[2].Visible = false;
+                        Actors[2].Enabled = false;
+                        amountofactors--;
+                        SelectActor(1);
+                        break;
+                }
             }
         }
 
@@ -64,6 +76,14 @@ namespace Use_Case_Helper_V2
                 {
                     picture.BorderStyle = BorderStyle.None;
                 }
+            }
+        }
+
+        public void SelectNoActor()
+        {
+            foreach(PictureBox picture in Actors)
+            {
+                picture.BorderStyle = BorderStyle.None;
             }
         }
     }

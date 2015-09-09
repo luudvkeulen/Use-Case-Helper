@@ -38,7 +38,7 @@ namespace Use_Case_Helper_V2
                 }
                 else if (radioActorRem.Checked)
                 {
-                    actor.RemoveActor();
+                    actor.RemoveActor(false);
                     actorselected = 1;
                 }
                 return;
@@ -75,7 +75,7 @@ namespace Use_Case_Helper_V2
                 if (!existing)
                 {
                     textboxes++;
-                    drawings.Add(new UseCase(this, textboxes, (pnlUseCases.PointToClient(Cursor.Position).X) - 60, (pnlUseCases.PointToClient(Cursor.Position).Y) - 25));
+                    drawings.Add(new UseCase(this, pnlUseCases, textboxes, (pnlUseCases.PointToClient(Cursor.Position).X) - 60, (pnlUseCases.PointToClient(Cursor.Position).Y) - 25));
                     pnlUseCases.Refresh();
                 }
             }
@@ -108,17 +108,28 @@ namespace Use_Case_Helper_V2
             actor.SelectActor(3);
             actorselected = 3;
         }
-#endregion
+        #endregion
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            Bitmap printscreen = new Bitmap(pnlUseCases.Width, pnlUseCases.Height);
-
-            Graphics graphics = Graphics.FromImage(printscreen as Image);
-
-            graphics.CopyFromScreen(pnlUseCases.Width, pnlUseCases.Height, 0, 0, printscreen.Size);
-
-            printscreen.Save(@"C:\printscreen.jpg", ImageFormat.Jpeg);
+            //Source: http://stackoverflow.com/questions/5124434/how-to-get-the-screenshot-of-the-form
+            using(SaveFileDialog saveScreenshot = new SaveFileDialog())
+            {
+                saveScreenshot.AddExtension = true;
+                saveScreenshot.DefaultExt = "png";
+                saveScreenshot.Title = "Save Use Case";
+                saveScreenshot.Filter = "Image(*.png)|*.*";
+                if (saveScreenshot.ShowDialog() == DialogResult.OK)
+                {
+                    actor.SelectNoActor(); //Actors deselecteren voor een mooi plaatje
+                    Rectangle bounds = pnlUseCases.Bounds;
+                    Bitmap bmp = new Bitmap(pnlUseCases.Width, pnlUseCases.Height);
+                    pnlUseCases.DrawToBitmap(bmp, new Rectangle(pnlUseCases.Location.X, pnlUseCases.Location.Y, bmp.Width, bmp.Height));
+                    bmp.Save(saveScreenshot.FileName);
+                    actor.SelectActor(1);
+                }
+            }
+            
         }
 
         private void pnlUseCases_Paint(object sender, PaintEventArgs e)
@@ -137,6 +148,20 @@ namespace Use_Case_Helper_V2
                     Line line = (Line)drawing;
                     g.DrawLine(Pens.Black, line.X2, line.Y2, line.X1, line.Y1);
                 }
+            }
+        }
+
+        private void btnClear_Click(object sender, EventArgs e)
+        {
+            drawings.Clear();
+            pnlUseCases.Refresh();
+            actor.RemoveActor(true);
+            actorselected = 1;
+            for(int i = 1; i <= textboxes; i++)
+            {
+                string textboxname = "txtnr" + i.ToString();
+                Control txt = Controls[textboxname];
+                Controls.Remove(txt);
             }
         }
     }
