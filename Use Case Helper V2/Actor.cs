@@ -40,11 +40,13 @@ namespace Use_Case_Helper_V2
                     Actors[1].Visible = false;
                     Actors[1].Enabled = false;
                     amountofactors--;
+                    SelectActor(1);
                     break;
                 case 3:
                     Actors[2].Visible = false;
                     Actors[2].Enabled = false;
                     amountofactors--;
+                    SelectActor(1);
                     break;
             }
         }

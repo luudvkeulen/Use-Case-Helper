@@ -7,14 +7,17 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Drawing.Imaging;
 
 namespace Use_Case_Helper_V2
 {
     public partial class MainForm : Form
     {
-        int panelsize;
+        int actorselected = 1;
+        int textboxes = 0;
         PictureBox[] actors;
         Actor actor;
+        List<Drawing> drawings = new List<Drawing>();
 
         public MainForm()
         {
@@ -25,8 +28,9 @@ namespace Use_Case_Helper_V2
 
         private void panel1_Click(object sender, EventArgs e)
         {
-            int cursorposx = Cursor.Position.X;
-            if(cursorposx < (pnlUseCases.Width / 2))
+            Point cursorpos = pnlUseCases.PointToClient(Cursor.Position);
+
+            if (cursorpos.X < (pnlUseCases.Width / 2))
             {
                 if (radioActorAdd.Checked)
                 {
@@ -35,32 +39,101 @@ namespace Use_Case_Helper_V2
                 else if (radioActorRem.Checked)
                 {
                     actor.RemoveActor();
+                    actorselected = 1;
                 }
-            }
-            else
-            {
-                MessageBox.Show("UseCase");
+                return;
             }
 
-            if(radioLine.Checked)
+            bool existing = false;
+            UseCase usecase = null;
+            foreach (Drawing drawing in drawings)
             {
-                MessageBox.Show("Line");
+                if (drawing is UseCase)
+                {
+                    usecase = (UseCase)drawing;
+                    bool inx = (cursorpos.X > usecase.X1 && cursorpos.X < (usecase.X1 + 120));
+                    bool iny = (cursorpos.Y > usecase.Y1 && cursorpos.Y < (usecase.Y1 + 50));
+                    if (inx && iny)
+                    {
+                        existing = true;
+                        break;
+                    }
+                }
+            }
+
+            if (radioLine.Checked)
+            {
+                if (existing)
+                {
+                    drawings.Add(new Line(actorselected, usecase.X1, usecase.Y1 + 25));
+                    pnlUseCases.Refresh();
+                }
+            }
+
+            else if (radioUseCase.Checked)
+            {
+                if (!existing)
+                {
+                    textboxes++;
+                    drawings.Add(new UseCase(this, textboxes, (pnlUseCases.PointToClient(Cursor.Position).X) - 60, (pnlUseCases.PointToClient(Cursor.Position).Y) - 25));
+                    pnlUseCases.Refresh();
+                }
+            }
+            
+            else if (radioInfo.Checked)
+            {
+
             }
         }
 
+        #region actor event handlers
         private void actor1_Click(object sender, EventArgs e)
         {
             actor.SelectActor(1);
+            actorselected = 1;
         }
 
         private void actor2_Click(object sender, EventArgs e)
         {
             actor.SelectActor(2);
+            actorselected = 2;
         }
 
         private void actor3_Click(object sender, EventArgs e)
         {
             actor.SelectActor(3);
+            actorselected = 3;
+        }
+#endregion
+
+        private void btnSave_Click(object sender, EventArgs e)
+        {
+            Bitmap printscreen = new Bitmap(pnlUseCases.Width, pnlUseCases.Height);
+
+            Graphics graphics = Graphics.FromImage(printscreen as Image);
+
+            graphics.CopyFromScreen(pnlUseCases.Width, pnlUseCases.Height, 0, 0, printscreen.Size);
+
+            printscreen.Save(@"C:\printscreen.jpg", ImageFormat.Jpeg);
+        }
+
+        private void pnlUseCases_Paint(object sender, PaintEventArgs e)
+        {
+            Graphics g = e.Graphics;
+
+            foreach(Drawing drawing in drawings)
+            {
+                if(drawing is UseCase)
+                {
+                    UseCase usecase = (UseCase)drawing;
+                    g.DrawEllipse(Pens.Black, usecase.X1, usecase.Y1, usecase.X2, usecase.Y2);
+                }
+                else if(drawing is Line)
+                {
+                    Line line = (Line)drawing;
+                    g.DrawLine(Pens.Black, line.X2, line.Y2, line.X1, line.Y1);
+                }
+            }
         }
     }
 }

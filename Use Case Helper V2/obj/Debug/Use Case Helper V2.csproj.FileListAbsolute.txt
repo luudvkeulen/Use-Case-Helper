@@ -16,3 +16,12 @@ C:\Users\Game-PC\Source\Repos\Use-Case-Helper\Use Case Helper V2\obj\Debug\Use C
 C:\Users\Game-PC\Source\Repos\Use-Case-Helper\Use Case Helper V2\obj\Debug\Use_Case_Helper_V2.MainForm.resources
 C:\Users\Game-PC\Source\Repos\Use-Case-Helper\Use Case Helper V2\obj\Debug\Use_Case_Helper_V2.Properties.Resources.resources
 C:\Users\Game-PC\Source\Repos\Use-Case-Helper\Use Case Helper V2\obj\Debug\Use Case Helper V2.csproj.GenerateResource.Cache
+C:\Users\Luud\Source\Repos\Use-Case-Helper\Use Case Helper V2\bin\Debug\Use Case Helper V2.exe.config
+C:\Users\Luud\Source\Repos\Use-Case-Helper\Use Case Helper V2\bin\Debug\Use Case Helper V2.exe
+C:\Users\Luud\Source\Repos\Use-Case-Helper\Use Case Helper V2\bin\Debug\Use Case Helper V2.pdb
+C:\Users\Luud\Source\Repos\Use-Case-Helper\Use Case Helper V2\obj\Debug\Use Case Helper V2.csprojResolveAssemblyReference.cache
+C:\Users\Luud\Source\Repos\Use-Case-Helper\Use Case Helper V2\obj\Debug\Use_Case_Helper_V2.MainForm.resources
+C:\Users\Luud\Source\Repos\Use-Case-Helper\Use Case Helper V2\obj\Debug\Use_Case_Helper_V2.Properties.Resources.resources
+C:\Users\Luud\Source\Repos\Use-Case-Helper\Use Case Helper V2\obj\Debug\Use Case Helper V2.csproj.GenerateResource.Cache
+C:\Users\Luud\Source\Repos\Use-Case-Helper\Use Case Helper V2\obj\Debug\Use Case Helper V2.exe
+C:\Users\Luud\Source\Repos\Use-Case-Helper\Use Case Helper V2\obj\Debug\Use Case Helper V2.pdb

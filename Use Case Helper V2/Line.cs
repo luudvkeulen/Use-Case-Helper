@@ -8,12 +8,26 @@ namespace Use_Case_Helper_V2
 {
     class Line : Drawing
     {
-        int X2 { get; set; }
-        int Y2 { get; set; }
-        public Line(int X1, int Y1, int X2, int Y2) : base(X1, Y1)
+        public int X2 { get; set; }
+        public int Y2 { get; set; }
+        public Line(int actorselected, int X1, int Y1) : base(X1, Y1)
         {
-            this.X2 = X2;
-            this.Y2 = Y2;
+            X2 = 83;
+            switch (actorselected)
+            {
+                case 1:
+                    Y2 = 60;
+                    break;
+                case 2:
+                    Y2 = 210;
+                    break;
+                case 3:
+                    Y2 = 380;
+                    break;
+                default:
+                    Y2 = 0;
+                    break;
+            }
         }
     }
 }
