@@ -10,10 +10,12 @@ namespace Use_Case_Helper_V2
     public class Actor
     {
         PictureBox[] Actors { get; set; }
+        TextBox[] Textboxes { get; set; }
         int amountofactors;
-        public Actor(PictureBox[] actors)
+        public Actor(PictureBox[] actors, TextBox[] tbs)
         {
             Actors = actors;
+            Textboxes = tbs;
             amountofactors = 1;
         }
         public void AddActor()
@@ -23,11 +25,15 @@ namespace Use_Case_Helper_V2
                 case 1:
                     Actors[1].Visible = true;
                     Actors[1].Enabled = true;
+                    Textboxes[1].Visible = true;
+                    Textboxes[1].Enabled = true;
                     amountofactors++;
                     break;
                 case 2:
                     Actors[2].Visible = true;
                     Actors[2].Enabled = true;
+                    Textboxes[2].Visible = true;
+                    Textboxes[2].Enabled = true;
                     amountofactors++;
                     break;
             }
@@ -40,6 +46,10 @@ namespace Use_Case_Helper_V2
                 Actors[1].Enabled = false;
                 Actors[2].Visible = false;
                 Actors[2].Enabled = false;
+                Textboxes[1].Visible = false;
+                Textboxes[1].Enabled = false;
+                Textboxes[2].Visible = false;
+                Textboxes[2].Enabled = false;
                 SelectActor(1);
                 amountofactors = 1;
             }
@@ -50,12 +60,16 @@ namespace Use_Case_Helper_V2
                     case 2:
                         Actors[1].Visible = false;
                         Actors[1].Enabled = false;
+                        Textboxes[1].Visible = false;
+                        Textboxes[1].Enabled = false;
                         amountofactors--;
                         SelectActor(1);
                         break;
                     case 3:
                         Actors[2].Visible = false;
                         Actors[2].Enabled = false;
+                        Textboxes[2].Visible = false;
+                        Textboxes[2].Enabled = false;
                         amountofactors--;
                         SelectActor(1);
                         break;

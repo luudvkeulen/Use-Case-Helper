@@ -16,6 +16,7 @@ namespace Use_Case_Helper_V2
         int actorselected = 1;
         int textboxes = 0;
         PictureBox[] actors;
+        TextBox[] tbs;
         Actor actor;
         List<Drawing> drawings = new List<Drawing>();
 
@@ -23,7 +24,8 @@ namespace Use_Case_Helper_V2
         {
             InitializeComponent();
             actors = new PictureBox[] { actor1, actor2, actor3 };
-            actor = new Actor(actors);
+            tbs = new TextBox[] { actortext1, actortext2, actortext3 };
+            actor = new Actor(actors, tbs);
         }
 
         private void panel1_Click(object sender, EventArgs e)
@@ -123,7 +125,7 @@ namespace Use_Case_Helper_V2
                 {
                     actor.SelectNoActor(); //Actors deselecteren voor een mooi plaatje
                     Rectangle bounds = pnlUseCases.Bounds;
-                    Bitmap bmp = new Bitmap(pnlUseCases.Width, pnlUseCases.Height);
+                    Bitmap bmp = new Bitmap(938, 532);
                     pnlUseCases.DrawToBitmap(bmp, new Rectangle(pnlUseCases.Location.X, pnlUseCases.Location.Y, bmp.Width, bmp.Height));
                     bmp.Save(saveScreenshot.FileName);
                     actor.SelectActor(1);
