@@ -20,7 +20,7 @@ namespace Use_Case_Helper_V2
         }
         public void AddActor()
         {
-            if (amountofactors == 1 || amountofactors == 2)
+            if (amountofactors > 0 || amountofactors < 2)
             {
                 Actors[amountofactors].Visible = true;
                 Actors[amountofactors].Enabled = true;
