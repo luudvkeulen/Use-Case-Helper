@@ -20,22 +20,13 @@ namespace Use_Case_Helper_V2
         }
         public void AddActor()
         {
-            switch (amountofactors)
+            if (amountofactors == 1 || amountofactors == 2)
             {
-                case 1:
-                    Actors[1].Visible = true;
-                    Actors[1].Enabled = true;
-                    Textboxes[1].Visible = true;
-                    Textboxes[1].Enabled = true;
-                    amountofactors++;
-                    break;
-                case 2:
-                    Actors[2].Visible = true;
-                    Actors[2].Enabled = true;
-                    Textboxes[2].Visible = true;
-                    Textboxes[2].Enabled = true;
-                    amountofactors++;
-                    break;
+                Actors[amountofactors].Visible = true;
+                Actors[amountofactors].Enabled = true;
+                Textboxes[amountofactors].Visible = true;
+                Textboxes[amountofactors].Enabled = true;
+                amountofactors++;
             }
         }
         public void RemoveActor(bool all)
